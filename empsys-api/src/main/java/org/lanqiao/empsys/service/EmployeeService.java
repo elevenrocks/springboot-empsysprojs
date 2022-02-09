@@ -1,0 +1,22 @@
+package org.lanqiao.empsys.service;
+
+import org.lanqiao.empsys.domain.Employee;
+
+import java.util.List;
+
+public interface EmployeeService {
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(Employee record);
+
+    int insertSelective(Employee record);
+
+    Employee selectByPrimaryKey(Integer id);
+
+    List<Employee> selectBySelective(Employee record, int pageNum, int pageSize);
+
+    int updateByPrimaryKeySelective(Employee record);
+
+    int updateByPrimaryKey(Employee record);
+}

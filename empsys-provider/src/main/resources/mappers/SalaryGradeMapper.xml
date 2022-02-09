@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.empsys.dao.SalaryGradeMapper">
+  <resultMap id="BaseResultMap" type="org.lanqiao.empsys.domain.SalaryGrade">
+    <result column="GRADE" jdbcType="INTEGER" property="grade" />
+    <result column="LOSAL" jdbcType="INTEGER" property="losal" />
+    <result column="HISAL" jdbcType="INTEGER" property="hisal" />
+  </resultMap>
+  <insert id="insert" parameterType="org.lanqiao.empsys.domain.SalaryGrade">
+    insert into salgrade (GRADE, LOSAL, HISAL
+      )
+    values (#{grade,jdbcType=INTEGER}, #{losal,jdbcType=INTEGER}, #{hisal,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.empsys.domain.SalaryGrade">
+    insert into salgrade
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="grade != null">
+        GRADE,
+      </if>
+      <if test="losal != null">
+        LOSAL,
+      </if>
+      <if test="hisal != null">
+        HISAL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="grade != null">
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="losal != null">
+        #{losal,jdbcType=INTEGER},
+      </if>
+      <if test="hisal != null">
+        #{hisal,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <!-- Bootstrap -->
+    <link th:href="@{/component/bootstrap-3.3.7/css/bootstrap.min.css}"
+          href="../../static/component/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/component/jquery-2.2.4.js}" src="../../static/component/jquery-2.2.4.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script th:src="@{/component/bootstrap-3.3.7/js/bootstrap.min.js}"
+            src="../../static/component/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container" style="margin-top: 200px;">
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+        </div>
+        <div class="col-md-6 column">
+                <form action="user/login" class="form-horizontal" role="form"  method="post">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">
+                          <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                        <input id="username" name="username" type="text" class="form-control"
+                               placeholder="请输入登录名" aria-describedby="basic-addon1">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon2">
+                          <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input id="password" name="password" type="password" class="form-control"
+                               placeholder="请输入密码" aria-describedby="basic-addon1">
+                    </div>
+                    <br><br>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button id="loginBtn" type="submit" class="btn btn-primary">登录</button>
+                            <button type="reset" class="btn btn-default" style="margin-left: 20px;">重置</button>
+                        </div>
+                    </div>
+                </form>
+        </div>
+        <div class="col-md-3 column">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

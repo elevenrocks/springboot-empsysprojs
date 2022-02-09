@@ -1,0 +1,32 @@
+#配置端口
+server:
+  port: 9001
+  servlet:
+    context-path: /empsys
+
+#配置注册中心
+dubbo:
+  application:
+    name: empsys-consumer
+  registry:
+    address: zookeeper://192.168.31.128:2181
+    timeout: 50000
+  scan:
+    base-packages: org.lanqiao.empsys.controller
+
+#thymeleaf
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+  # 热部署, 修改类和资源时不重启服务
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java  #重启目录
+      exclude: static/**  #设置classpath下 static 目录内容修改后不重启。一般设置为静态资源目录
+    freemarker:
+      cache: false  #页面不加载缓存，修改即时生效
