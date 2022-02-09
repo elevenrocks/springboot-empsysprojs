@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/empsys-api/empsys-api.iml" filepath="$PROJECT_DIR$/empsys-api/empsys-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/empsys-consumer/empsys-consumer.iml" filepath="$PROJECT_DIR$/empsys-consumer/empsys-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/empsys-parent/empsys-parent.iml" filepath="$PROJECT_DIR$/empsys-parent/empsys-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/empsys-provider/empsys-provider.iml" filepath="$PROJECT_DIR$/empsys-provider/empsys-provider.iml" />
+    </modules>
+  </component>
+</project>

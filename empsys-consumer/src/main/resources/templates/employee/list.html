@@ -4,7 +4,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>系统界面</title>
     <!-- Bootstrap -->
     <link th:href="@{/component/bootstrap-3.3.7/css/bootstrap.min.css}"
           href="../../../static/component/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +21,7 @@
     <div class="row clearfix">
         <!-- <div class="col-md-1 column"></div>-->
         <div class="col-md-10 column col-md-offset-1">
-            <form action="/employees" class="form-horizontal" role="form"  method="get">
+            <form action="employees/query" class="form-horizontal" role="form"  method="get">
                 <div class="input-group">
                     <span class="input-group-addon">姓名</span>
                     <input id="ename" name="ename" type="text"
@@ -52,7 +52,7 @@
             </form>
         </div>
     </div>
-    <div class="row clearfix">
+   <!-- <div class="row clearfix">
         <div class="col-md-1 column"></div>
         <div class="col-md-10 column">
             <div class="panel panel-primary">
@@ -114,7 +114,7 @@
                             <li th:if="${employeeList.pageNum gt 1}" >
                                 <a th:text="${employeeList.pageNum-1}" th:href="@{/employees(pageNum=${employeeList.pageNum}-1)}"></a>
                             </li>
-                            <!--/* 当前页 */-->
+                            &lt;!&ndash;/* 当前页 */&ndash;&gt;
                             <li th:if="${employeeList.pageNum le employeeList.pages}"
                                 th:class="${employeeList.pageNum le employeeList.pages ? 'active':''}">
                                 <a th:text="${employeeList.pageNum}" th:href="@{/employees(pageNum=${employeeList.pageNum})}"></a>
@@ -139,18 +139,18 @@
                         </ul>
                     </nav>
                 </div>
-                <!--
+                &lt;!&ndash;
                 <div class="panel-footer">
                     Panel footer
                 </div>
-                -->
+                &ndash;&gt;
             </div>
 
         </div>
         <div class="col-md-1 column"></div>
     </div>
 </div>
-<!-- 更新的模态框 -->
+&lt;!&ndash; 更新的模态框 &ndash;&gt;
 <div class="modal fade bs-updateform-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -175,7 +175,7 @@
         // do something...
         alert('模态框隐藏后触发的动作。')
     })
-</script>
+</script>-->
 
 </body>
 </html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="empsys-provider" />
+        <module name="empsys-api" />
+        <module name="empsys-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="empsys-api" target="1.8" />
+      <module name="empsys-consumer" target="1.8" />
+      <module name="empsys-parent" target="1.8" />
+      <module name="empsys-provider" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="empsys-api" options="-parameters" />
+      <module name="empsys-consumer" options="-parameters" />
+      <module name="empsys-provider" options="-parameters" />
+    </option>
+  </component>
+</project>

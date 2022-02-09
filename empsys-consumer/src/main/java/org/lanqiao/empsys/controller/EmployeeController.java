@@ -17,7 +17,7 @@ public class EmployeeController {
     @DubboReference(interfaceClass = EmployeeService.class,version = "1.0")
     private EmployeeService employeeService;
 
-    @GetMapping("/employees")
+    @GetMapping("/employees/query")
     public String queryAll(Employee employee, Integer pageNum, Model model, HttpSession session) {
         if (pageNum == null) {
             pageNum = 1;
@@ -28,6 +28,8 @@ public class EmployeeController {
         }
         //查询
         List<Employee> employeeList = employeeService.selectBySelective(employee, pageNum, 5);
+        System.out.println("++++++++++++++++++++++++++++++");
+        employeeList.forEach(System.out::println);
         //保存数据请请求作用域
         model.addAttribute("employeeList", employeeList);
         return "employee/list";  //forward to employee/list.html
