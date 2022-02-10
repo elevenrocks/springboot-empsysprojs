@@ -12,6 +12,14 @@ spring:
   redis:
     port: 1212
     host: 192.168.31.128
+    lettuce:
+      pool:
+        max-active: 50
+        max-wait: 10000ms
+        max-idle: 8
+        min-idle: 5
+      database: 5  #选择五号库进行数据的存储
+
 #dubbo
 #扫描暴露接口的包
 dubbo:

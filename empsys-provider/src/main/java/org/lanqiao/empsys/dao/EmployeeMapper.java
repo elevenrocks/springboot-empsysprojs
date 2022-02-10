@@ -1,5 +1,6 @@
 package org.lanqiao.empsys.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.lanqiao.empsys.domain.Employee;
 
 import java.util.List;
@@ -17,5 +18,5 @@ public interface EmployeeMapper {
 
     int updateByPrimaryKey(Employee record);
 
-    List<Employee> selectBySelective(Employee record, int pageNum, int pageSize);
+    List<Employee> selectBySelective(@Param("employee") Employee record);
 }

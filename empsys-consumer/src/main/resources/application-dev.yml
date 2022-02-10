@@ -29,4 +29,4 @@ spring:
       additional-paths: src/main/java  #重启目录
       exclude: static/**  #设置classpath下 static 目录内容修改后不重启。一般设置为静态资源目录
     freemarker:
-      cache: false  #页面不加载缓存，修改即时生效
+      cache: true  #页面不加载缓存，修改即时生效

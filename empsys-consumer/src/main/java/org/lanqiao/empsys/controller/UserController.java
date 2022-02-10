@@ -28,8 +28,8 @@ public class UserController {
         if (u==null){
             return "redirect:/";
         }
-        System.out.println(user+"------------------------");
-        return "employee/list";
+
+        return "redirect:/employees/query";
     }
 
 }

@@ -35,7 +35,7 @@
     w.deptno,
     m.ename mname,
     d.DNAME
-    from employee w,employee m, department d
+    from emp w,emp m, dept d
     <where>
       and w.mgr=m.empno
       and w.deptno=d.deptno

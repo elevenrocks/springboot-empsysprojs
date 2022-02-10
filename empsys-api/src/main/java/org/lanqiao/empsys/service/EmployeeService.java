@@ -1,5 +1,7 @@
 package org.lanqiao.empsys.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import org.lanqiao.empsys.domain.Employee;
 
 import java.util.List;
@@ -14,7 +16,7 @@ public interface EmployeeService {
 
     Employee selectByPrimaryKey(Integer id);
 
-    List<Employee> selectBySelective(Employee record, int pageNum, int pageSize);
+    PageInfo<Employee> selectBySelective(Employee record, int pageNum, int pageSize);
 
     int updateByPrimaryKeySelective(Employee record);
 

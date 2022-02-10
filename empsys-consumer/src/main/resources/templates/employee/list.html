@@ -21,7 +21,7 @@
     <div class="row clearfix">
         <!-- <div class="col-md-1 column"></div>-->
         <div class="col-md-10 column col-md-offset-1">
-            <form action="employees/query" class="form-horizontal" role="form"  method="get">
+            <form th:action="@{/employees/query}" class="form-horizontal" role="form"  method="get">
                 <div class="input-group">
                     <span class="input-group-addon">姓名</span>
                     <input id="ename" name="ename" type="text"
@@ -46,13 +46,13 @@
                         <button id="queryBtn" type="submit" class="btn btn-primary btn-block">查询</button>
                     </div>
                     <div class="col-sm-6 text-left">
-                        <button type="button" class="btn btn-default btn-block">重置</button>
+                        <button type="reset" class="btn btn-default btn-block">重置</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-   <!-- <div class="row clearfix">
+   <div class="row clearfix">
         <div class="col-md-1 column"></div>
         <div class="col-md-10 column">
             <div class="panel panel-primary">
@@ -71,11 +71,13 @@
                             <th>工资</th>
                             <th>奖金</th>
                             <th>部门号</th>
-                            <td>操作</td>
+                            <th>操作</th>
+
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr th:each="emp,status : ${employeeList}">
+
+                       <tbody>
+                        <tr th:each="emp,status:${employeeList}">
                             <td th:text="${emp.empno}">1</td>
                             <td th:text="${emp.ename}">Monthly</td>
                             <td th:text="${emp.job}">CLERK</td>
@@ -84,73 +86,69 @@
                             <td th:text="${emp.sal}">9999.0</td>
                             <td th:text="${emp.comm}">1000.0</td>
                             <td th:text="${emp.dname}">ACCOUNTING</td>
-                            <td>
+                            <td colspan="2">
                                 <a href="javascript:void(0)" class="btn btn-primary"
                                    data-toggle="modal" data-backdrop="static" th:onclick="|toUpdate(${emp.empno})|"
                                    data-target=".bs-updateform-modal-lg">更新</a>
+                                <a href="javascript:void(0)" class="btn btn-primary" th:onclick="|toDelete(${emp.empno})|">删除</a>
                             </td>
                         </tr>
                         </tbody>
                     </table>
-                    <nav aria-label="Page navigation" class="text-center" style="margin: 0px;padding: 0px;">
+                  <nav aria-label="Page navigation" class="text-center" style="margin: 0px;padding: 0px;">
                         <ul class="pagination">
-                            <li th:if="${employeeList.pageNum le employeeList.pages}">
-                                <a th:href="@{/employees(pageNum=1)}" aria-label="Previous">
+                            <li th:if="${(pageInfo.pageNum) le (pageInfo.pages)}">
+                                <a th:href="@{/employees/query(pageNum=1)}" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li th:if="${employeeList.pageNum}>1">
-                                <a th:href="@{/employees(pageNum=${employeeList.pageNum}-1)}">&lt;</a>
+                            <li th:if="${pageInfo.pageNum}>1">
+                                <a th:href="@{/employees/query(pageNum=${pageInfo.pageNum}-1)}">&lt;</a>
                             </li>
-                            <li th:if="${employeeList.pageNum-3 gt 1}">
-                                <a th:text="${employeeList.pageNum-4}" th:href="@{/employees(pageNum=${employeeList.pageNum}-4)}"></a>
+                            <li th:if="${(pageInfo.pageNum)-3 gt 1}">
+                                <a th:text="${(pageInfo.pageNum)-4}" th:href="@{/employees/query(pageNum=${pageInfo.pageNum}-4)}"></a>
                             </li>
-                            <li th:if="${employeeList.pageNum-2 gt 1}">
-                                <a th:text="${employeeList.pageNum-3}" th:href="@{/employees(pageNum=${employeeList.pageNum}-3)}"></a>
+                            <li th:if="${(pageInfo.pageNum)-2 gt 1}">
+                                <a th:text="${(pageInfo.pageNum)-3}" th:href="@{/employees/query(pageNum=${pageInfo.pageNum}-3)}"></a>
                             </li>
-                            <li th:if="${employeeList.pageNum-1 gt 1}">
-                                <a th:text="${employeeList.pageNum-2}" th:href="@{/employees(pageNum=${employeeList.pageNum}-2)}"></a>
+                            <li th:if="${(pageInfo.pageNum)-1 gt 1}">
+                                <a th:text="${(pageInfo.pageNum)-2}" th:href="@{/employees/query(pageNum=${pageInfo.pageNum}-2)}"></a>
                             </li>
-                            <li th:if="${employeeList.pageNum gt 1}" >
-                                <a th:text="${employeeList.pageNum-1}" th:href="@{/employees(pageNum=${employeeList.pageNum}-1)}"></a>
+                            <li th:if="${pageInfo.pageNum gt 1}" >
+                                <a th:text="${(pageInfo.pageNum)-1}" th:href="@{/employees/query(pageNum=${pageInfo.pageNum}-1)}"></a>
                             </li>
-                            &lt;!&ndash;/* 当前页 */&ndash;&gt;
-                            <li th:if="${employeeList.pageNum le employeeList.pages}"
-                                th:class="${employeeList.pageNum le employeeList.pages ? 'active':''}">
-                                <a th:text="${employeeList.pageNum}" th:href="@{/employees(pageNum=${employeeList.pageNum})}"></a>
+                            <li th:if="${pageInfo.pageNum le pageInfo.pages}"
+                                th:class="${pageInfo.pageNum le pageInfo.pages ? 'active':''}">
+                                <a th:text="${pageInfo.pageNum}" th:href="@{/employees/query(pageNum=${pageInfo.pageNum})}"></a>
                             </li>
-                            <li th:if="${employeeList.pageNum+1 le employeeList.pages}">
-                                <a th:text="${employeeList.pageNum+1}" th:href="@{/employees(pageNum=${employeeList.pageNum}+1)}"></a>
+                            <li th:if="${pageInfo.pageNum+1 le pageInfo.pages}">
+                                <a th:text="${pageInfo.pageNum+1}" th:href="@{/employees/query(pageNum=${pageInfo.pageNum}+1)}"></a>
                             </li>
-                            <li th:if="${employeeList.pageNum+2 le employeeList.pages}">
-                                <a th:text="${employeeList.pageNum+2}" th:href="@{/employees(pageNum=${employeeList.pageNum}+2)}"></a>
+                            <li th:if="${pageInfo.pageNum+2 le pageInfo.pages}">
+                                <a th:text="${pageInfo.pageNum+2}" th:href="@{/employees/query(pageNum=${pageInfo.pageNum}+2)}"></a>
                             </li>
-                            <li th:if="${employeeList.pageNum+3 le employeeList.pages}">
-                                <a th:text="${employeeList.pageNum+3}" th:href="@{/employees(pageNum=${employeeList.pageNum}+3)}"></a>
+                            <li th:if="${pageInfo.pageNum+3 le pageInfo.pages}">
+                                <a th:text="${pageInfo.pageNum+3}" th:href="@{/employees/query(pageNum=${pageInfo.pageNum}+3)}"></a>
                             </li>
-                            <li th:if="${employeeList.pageNum lt employeeList.pages}">
-                                <a th:href="@{/employees(pageNum=${employeeList.pageNum}+1)}">&gt;</a>
+                            <li th:if="${pageInfo.pageNum lt pageInfo.pages}">
+                                <a th:href="@{/employees/query(pageNum=${pageInfo.pageNum}+1)}">&gt;</a>
                             </li>
-                            <li th:if="${employeeList.pageNum lt employeeList.pages}">
-                                <a th:href="@{/employees(pageNum=${employeeList.pages})}" aria-label="Next">
+                            <li th:if="${pageInfo.pageNum lt pageInfo.pages}">
+                                <a th:href="@{/employees/query(pageNum=${pageInfo.pages})}" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>
                         </ul>
                     </nav>
                 </div>
-                &lt;!&ndash;
-                <div class="panel-footer">
-                    Panel footer
-                </div>
-                &ndash;&gt;
+
             </div>
 
         </div>
         <div class="col-md-1 column"></div>
     </div>
 </div>
-&lt;!&ndash; 更新的模态框 &ndash;&gt;
+<!--&lt;!&ndash; 更新的模态框 &ndash;&gt;-->
 <div class="modal fade bs-updateform-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -159,23 +157,61 @@
                 <h4 class="modal-title" id="myModalLabel">更新</h4>
             </div>
             <div id="updateform-modal-body" class="modal-body">
-                ...
+                <form action="user/login" class="form-horizontal" role="form"  method="post">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">
+                          <div>姓名:</div>
+                        </span>
+                        <input id="username"  name="username" type="text" class="form-control"
+                               placeholder="请输入登录名" aria-describedby="basic-addon1">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon2">
+                          <div>姓名:</div>
+                        </span>
+                        <input id="password" name="password" type="password" class="form-control"
+                               placeholder="请输入密码" aria-describedby="basic-addon1">
+                    </div>
+                    <br><br>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-4 col-sm-8">
+                            <button id="loginBtn" type="submit" class="btn btn-primary">登录</button>
+                            <button type="reset" class="btn btn-default" style="margin-left: 20px;">重置</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 <script>
     function toUpdate(empno) {
-        $.get(`/employees/${empno}`,function (resp) {
+
+        $.get(`/empsys/employees/${empno}`,function (resp) {
             $('#updateform-modal-body').html(resp);
         });
     }
 
     $('.bs-updateform-modal-lg').on('hidden.bs.modal', function (e) {
         // do something...
-        alert('模态框隐藏后触发的动作。')
+        //alert('模态框隐藏后触发的动作。')
+
     })
-</script>-->
+
+    //删除
+    function toDelete(empno) {
+        if(!confirm("确定删除吗?")){
+            alert("取消操作!!");
+            return;
+        }
+        $.get(`/empsys/employees/delete/${empno}`,function (resp) {
+            location.reload();
+            alert(resp);
+        });
+    }
+</script>
 
 </body>
 </html>

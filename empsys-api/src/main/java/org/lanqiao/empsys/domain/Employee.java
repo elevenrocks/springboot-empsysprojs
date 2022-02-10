@@ -3,6 +3,7 @@ package org.lanqiao.empsys.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,6 +23,9 @@ public class Employee  implements Serializable {
 
     private Integer mgr;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date hiredate;
 
     private Double sal;

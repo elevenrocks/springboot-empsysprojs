@@ -64,6 +64,12 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring-boot-starter-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.lanqiao.empsys</groupId>
+            <artifactId>empsys-api</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 
